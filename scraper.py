@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 from flask import g
 import json
+import threading
+
+
 
 def is_ascii(s):
     try:
@@ -13,6 +16,7 @@ def is_ascii(s):
 
 
 def scrapeCovid():
+    threading.Timer(300.0, scrapeCovid).start()
 
     pageLink = "https://covid-dataset-by-bikram.herokuapp.com/CoronaNepal.csv"
 
@@ -24,7 +28,6 @@ def scrapeCovid():
     
 
     cleanArr = list(map(lambda s: s.strip(), arrayCsv))
-    print(cleanArr)
 
 
     print(pageContent)
