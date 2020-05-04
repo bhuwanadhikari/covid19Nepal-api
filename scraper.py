@@ -25,14 +25,13 @@ def scrapeCovid():
 
     arrayCsv = pageResponse.content.decode("utf-8").split("\n")[-78:-1]
 
-    
-
     cleanArr = list(map(lambda s: s.strip(), arrayCsv))
+    
+    #check if the list has histricts
+    if len(cleanArr) == 77:
+        with open("CoronaNepal.json", "w") as jsonFile:
+            json.dump(cleanArr, jsonFile)
 
-
-    print(pageContent)
-    with open("CoronaNepal.json", "w") as jsonFile:
-        json.dump(cleanArr, jsonFile)
-
+    
 
 # scrapeCovid()
