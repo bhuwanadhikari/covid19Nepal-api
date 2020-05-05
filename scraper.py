@@ -23,7 +23,7 @@ def scrapeCovid():
     pageResponse = requests.get(pageLink, timeout=50)
     pageContent = BeautifulSoup(pageResponse.content, "html.parser")
 
-    arrayCsv = pageResponse.content.decode("utf-8").split("\n")[-77:]
+    arrayCsv = pageResponse.content.decode("utf-8").split("\n")[-78:-1]
 
     cleanArr = list(map(lambda s: s.strip(), arrayCsv))
     #check if the list has histricts
