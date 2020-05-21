@@ -17,7 +17,7 @@ def is_ascii(s):
 
 def scrapeCovid():
     threading.Timer(300.0, scrapeCovid).start()
-
+    oldTime = 
     pageLink = "https://covid-dataset-by-bikram.herokuapp.com/CoronaNepal.csv"
 
     pageResponse = requests.get(pageLink, timeout=50)
