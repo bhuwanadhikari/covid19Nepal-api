@@ -3,6 +3,7 @@ import requests
 from flask import g
 import json
 import threading
+from datetime import datetime
 
 
 
@@ -16,8 +17,12 @@ def is_ascii(s):
 
 
 def scrapeCovid():
+
+    oldTime = datetime.now();
+
     threading.Timer(300.0, scrapeCovid).start()
-    oldTime = 
+    newTime = datetime.now();
+    print(oldTime)
     pageLink = "https://covid-dataset-by-bikram.herokuapp.com/CoronaNepal.csv"
 
     pageResponse = requests.get(pageLink, timeout=50)
@@ -25,12 +30,15 @@ def scrapeCovid():
 
     arrayCsv = pageResponse.content.decode("utf-8").split("\n")[-78:-1]
 
+
+    # print("here is the main therere ")
+
     cleanArr = list(map(lambda s: s.strip(), arrayCsv))
     #check if the list has histricts
     if len(cleanArr) == 77:
         with open("CoronaNepal.json", "w") as jsonFile:
             json.dump(cleanArr, jsonFile)
 
-    
+    oldTime = newTime
 
 # scrapeCovid()
