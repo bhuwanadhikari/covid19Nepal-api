@@ -15,33 +15,6 @@ CORS(app)
 scraper.scrapeCovid()
 
 
-
-print("inside the scarping phase")
-print('laoding')
-pageLink = "https://kathmandupost.com/covid19"
-
-
-# pageResponse = requests.get(pageLink, timeout=50)
-pageResponse = requests.get(pageLink)
-soup = BeautifulSoup(pageResponse.content, "html.parser")
-print('page content here')
-
-
-json_string = re.findall("kathmandu.*?kathmandu", soup)
-print (json_string)
-
-print('finished')
-
-
-# pattern = re.compile(r"window.Rent.data\s+=\s+(\{.*?\});\n")
-# script = soup.find("script", text=pattern)
-
-# data = pattern.search(script.text).group(1)
-# data = json.loads(data)
-# print(data)
-
-
-
 @app.route("/corona-data")
 def districtsApi():
     with open("CoronaNepal.json", mode="r", encoding="utf-8") as ff:
@@ -51,17 +24,15 @@ def districtsApi():
 
 @app.route("/corona-data-test")
 def districtsApiTest():
+    with open("CoronaNepalNew.json", mode="r", encoding="utf-8") as ff2:
+        coronaDataTest = json.load(ff2)
 
-
-   
-
-    return jsonify({"test": "fuck asdf "})
+    return jsonify(coronaDataTest)
 
 
 @app.route("/")
 def home():
     return jsonify({"msg": "working"})
-
 
 
 if __name__ == "__main__":
