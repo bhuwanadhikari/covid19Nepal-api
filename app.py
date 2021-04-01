@@ -15,19 +15,19 @@ CORS(app)
 scraper.scrapeCovid()
 
 
+# @app.route("/corona-data")
+# def districtsApi():
+#     with open("CoronaNepal.json", mode="r", encoding="utf-8") as ff:
+#         coronaData = json.load(ff)
+#     return jsonify(coronaData)
+
+
 @app.route("/corona-data")
 def districtsApi():
-    with open("CoronaNepal.json", mode="r", encoding="utf-8") as ff:
-        coronaData = json.load(ff)
-    return jsonify(coronaData)
-
-
-@app.route("/corona-data-test")
-def districtsApiTest():
     with open("CoronaNepalNew.json", mode="r", encoding="utf-8") as ff2:
-        coronaDataTest = json.load(ff2)
+        coronaData = json.load(ff2)
 
-    return jsonify(coronaDataTest)
+    return jsonify(coronaData)
 
 
 @app.route("/")
