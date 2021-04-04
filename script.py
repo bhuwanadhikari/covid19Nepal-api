@@ -3,9 +3,9 @@ import re
 
 data = '''
 jmufasdjfl;asdkfj
-<script> var jsonString = "{"maal": "muji", "bhuwan": "lado"}"
+<script> var jsonString = "{"xyz": "pqr", "bhuwan": "abc"}"
 
-next = "{"hawa": "muji"}"
+next = "{"hawa": "para"}"
 ''' 
 
 regex = r'next = "({.*})"'
